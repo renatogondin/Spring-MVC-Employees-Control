@@ -1,0 +1,53 @@
+1)
+Método: GET
+http://localhost:8080/webservices-01/service/emps
+Para uma resposta no formato XML o header Accept: application/xml não é necessário (default).
+Para uma resposta no formato JSON é preciso enviar o header Accept: application/json ou colocar a sufixo .json no URL
+
+
+2)
+Método: GET
+http://localhost:8080/webservices-01/service/emp/1
+Para uma resposta no formato XML o header Accept: application/xml não é necessário (default).
+Para uma resposta no formato JSON é preciso enviar o header Accept: application/json ou colocar a sufixo .json no URL
+
+
+3)
+Método: POST
+http://localhost:8080/webservices-01/service/emp
+Header: Content-type:application/xml 			<=======  IMPORTANTE (Para o web service saber que está recebendo XML)
+Request Body: <empregado><nome>Sergio de Oliveira</nome><salario>7000</salario></empregado>
+Para uma resposta no formato XML o header Accept: application/xml não é necessário (default).
+Para uma resposta no formato JSON é preciso enviar o header Accept: application/json ou colocar a sufixo .json no URL
+
+
+4)
+Método: PUT
+http://localhost:8080/webservices-01/service/emp
+Header: Content-type:application/xml 			<=======  IMPORTANTE (Para o web service saber que está recebendo XML) 
+Request Body: <empregado><id>2</id><nome>Alberto Roberto</nome><salario>3000.0</salario></empregado>
+Para uma resposta no formato XML o header Accept: application/xml não é necessário (default).
+Para uma resposta no formato JSON é preciso enviar o header Accept: application/json ou colocar a sufixo .json no URL
+
+
+5)
+Método: DELETE
+http://localhost:8080/webservices-01/service/emp/1
+Para uma resposta no formato XML o header Accept: application/xml não é necessário (default).
+Para uma resposta no formato JSON é preciso enviar o header Accept: application/json ou colocar a sufixo .json no URL
+
+
+6)
+Método: DELETE
+http://localhost:8080/webservices-01/service/removeEmp/2
+Para uma resposta no formato XML o header Accept: application/xml não é necessário (default).
+Para uma resposta no formato JSON é preciso enviar o header Accept: application/json ou colocar a sufixo .json no URL
+
+
+
+
+
+
+
+
+

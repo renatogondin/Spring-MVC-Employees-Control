@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       		 http://www.springframework.org/schema/beans 
+             http://www.springframework.org/schema/beans/spring-beans.xsd 
+             http://www.springframework.org/schema/context 
+             http://www.springframework.org/schema/context/spring-context.xsd 
+             http://www.springframework.org/schema/tx
+             http://www.springframework.org/schema/tx/spring-tx.xsd    
+             http://www.springframework.org/schema/mvc
+             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!-- 
+	A representação do mesmo recurso com diferentes MIME types é um importante  aspecto  do
+	RESTful web services. Geralmente se usa o mesmo URI com um header HTTP do tipo "accept" 
+	diferente para recuperar o recurso com  representações  diferentes.  Você  também  pode 
+	utilizar um URI diferente, ou um URI com parâmetros de requisição diferentes.
+
+	No  Spring  é  possível  produzir   diferentes  representações   combinando  a   classe 
+	HttpMessageConverter e a anotação @ResponseBody.
+	
+	HttpMessageConverter
+	====================
+    
+    Requisições e respostas HTTP são baseadas em texto, o que significa que um browser e um 
+    servidor se comunicam  trocando  mensagens  de texto. Com o Spring, no entanto, métodos 
+    das classes contoladoras retornam strings puros e objetos  do domínio ou outros objetos 
+    embutidos da linguagem Java.  O Spring serializa  e desserializa  os objetos para texto 
+    bruto através da classe HttpMessageConverter. O Spring  possui implementações  para  as 
+    necessidades mais comuns, como as seguintes:
+    
+    StringHttpMessageConverter	 	   Lê um string de um request ou escreve em um response 
+	MarshallingHttpMessageConverter	   Lê / Escreve XML  utilizando  a  classe  marshaller/
+	                                   unmarshaller  do  Spring.  
+	MappingJacksonHttpMessageConverter Lê/Escreve dados JSON utilizando a  classe Jackson's 
+	                                   ObjectMapper. 
+ 
+	O conversor embutido do Spring denominado MarshallingHttpMessageConverter  é  utilizado
+	para fazer o mapeamento entre um objeto e XML (OXM). O exemplo utiliza  a  API  JAXB  2 
+	como marshaller/un-marshaller para o conversor.
+ -->
+ 
+ <!--    
+	Antes  de  você  criar  os  controladores  da aplicação  você tem que  indicar em quais 
+	packages estes controladores deverão ser procurados. Cada controlador deve ser  anotado 
+	com  @Controller e  @RequestMapping.  Para  o  Spring  detectar  automaticamente  estas 
+	anotações é  preciso habilitar  o escaneamento  de componentes do Spring com o elemento 
+	abaixo.
+-->
+ 	<context:component-scan base-package="controle, ds" />
+	
+	<!-- Para habilitar o uso da anotação @RequestMapping a nível de tipo e de método. -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
+    <!-- É preciso definir a classe responsável pela estratégia de seleção de conteúdo.
+         (contentNegotiationManager).
+ 	     
+ 	     Ordem default de definição de conteúdo:
+  		 1. Sufixo de URL, como .xml
+ 		 2. Parâmetro de formato (format=xml (default)) (desabilitado por default)
+ 		 3. Accept HTTP Header
+ --> 	 
+
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+	<bean id="contentNegotiationManager" 
+	      class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"/>
+
+</beans>

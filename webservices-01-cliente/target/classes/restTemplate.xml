@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!-- 
+	 Utilizando RestTemplate para se comunicar com REST services
+	 ===========================================================
+	
+	 No Spring podemos  utilizar a  classe  RestTemplate  para  nos  comunicarmos  com  rest 
+	 services. Ela é conceitualmente similar a outras classes template do Spring, tais  como 
+	 JdbcTemplate e JmsTemplate.
+ 	
+	 RestTemplate  também  utiliza a classe HttpMessageConverter. Você pode passar um objeto 
+	 do tipo  Class na requisição e  deixar  que os  conversores  tratem os  mapeamentos.
+	
+	 Neste exercício utilizamos alguns dos métodos que podem simplificar a comunicação entre 
+	 servidores. A classe RestTemplate vários métodos, incluindo:
+	
+	 - exchange: executa certos métodos HTTP com o corpo da requisição e obtém a resposta.
+	 - getForObject: executa o método GET HTTP e obtém a resposta como um objeto.
+	 - postForObject: executa o método POST HTTP com um certo corpo de requisição.
+	 - put: executa o método PUT HTTP com um certo corpo de requisição.
+	 - delete: executa o método DELETE para um certo URI.
+	 
+	 A configuração abaixo é importante para a aplicação cliente.
+ -->
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+</beans>
