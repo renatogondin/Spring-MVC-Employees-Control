@@ -47,7 +47,7 @@
     <dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-webmvc</artifactId>
-	  <version>4.1.1.RELEASE</version>
+	  <version>5.3.18</version>
     </dependency>
 <!--      
     <dependency>
@@ -57,7 +57,7 @@
     </dependency>
 -->    
 <!--
-    Tem relação com AOP - Não estamos utilizando
+    Tem relaÃ§Ã£o com AOP - NÃ£o estamos utilizando
     <dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-instrument</artifactId>
